@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>خرید بلیط هواپیما</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #e0f7fa; /* رنگ پس‌زمینه آبی روشن */
+            color: #333;
+        }
+
+        /* هدر و ناوبری */
+        header {
+            background-color: #0277bd; /* آبی تیره */
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0288d1; /* آبی متوسط */
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #039be5; /* آبی روشن‌تر */
+        }
+
+        /* بخش‌های مختلف */
+        section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* بخش hero */
+        .hero {
+            background: linear-gradient(rgba(0, 119, 190, 0.6), rgba(0, 119, 190, 0.6)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* بخش فرم جستجو */
+        .search-section {
+            background-color: #ffffff; /* رنگ سفید */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* عنوان بخش‌ها */
+        h3 {
+            text-align: center;
+            color: #0277bd;
+            margin-bottom: 20px;
+        }
+
+        /* فرم‌ها */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: outline 0.3s, border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid #0288d1; /* رنگ آبی هنگام فوکوس */
+            outline-offset: 2px;
+        }
+
+        button {
+            background-color: #0288d1;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #039be5;
+        }
+
+        /* بخش خدمات و سوالات متداول */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 280px;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* سوالات متداول */
+        .faq {
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .faq h3 {
+            text-align: center;
+            color: #0277bd;
+            margin-bottom: 20px;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+        }
+
+        .question {
+            background-color: #0288d1;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .answer {
+            display: none;
+            padding: 10px 15px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        /* پاورقی */
+        footer {
+            background-color: #0277bd;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* ریسپانسیو */
+        @media(max-width: 768px){
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>خرید بلیط هواپیما</h1>
+</header>
+
+<nav>
+    <a href="#home">خانه</a>
+    <a href="#about">درباره ما</a>
+    <a href="#search">رزرو بلیط</a>
+    <a href="#faqs">سوالات متداول</a>
+    <a href="#contact">تماس با ما</a>
+</nav>
+
+<section class="hero" id="home">
+    <h2>سفرهای رویایی، با بهترین قیمت</h2>
+</section>
+
+<!-- بخش جستجو -->
+<section id="search">
+    <h3>جستجو و رزرو بلیط هواپیما</h3>
+    <div class="search-section">
+        <form>
+            <div class="form-group">
+                <label for="from">مبدأ</label>
+                <input type="text" id="from" placeholder="مبدأ سفر" required />
+            </div>
+            <div class="form-group">
+                <label for="to">مقصد</label>
+                <input type="text" id="to" placeholder="مقصد سفر" required />
+            </div>
+            <div class="form-group">
+                <label for="date">تاریخ سفر</label>
+                <input type="date" id="date" required />
+            </div>
+            <div class="form-group">
+                <label for="passengers">تعداد مسافران</label>
+                <select id="passengers">
+                    <option value="1">1 نفر</option>
+                    <option value="2">2 نفر</option>
+                    <option value="3">3 نفر</option>
+                    <option value="4">4 نفر</option>
+                    <option value="5">5 نفر</option>
+                </select>
+            </div>
+            <button type="submit">جستجو</button>
+        </form>
+    </div>
+</section>
+
+<!-- خدمات -->
+<section>
+    <h3>خدمات ما</h3>
+    <div class="cards">
+        <div class="card">
+            <h4>پشتیبانی</h4>
+            <p>تیم پشتیبانی ما همیشه آماده پاسخگویی به سوالات شما است.</p>
+        </div>
+        <div class="card">
+            <h4>قیمت رقابتی</h4>
+            <p>بهترین قیمت‌ها برای بلیط‌های هواپیما، تضمین شده.</p>
+        </div>
+        <div class="card">
+            <h4>رزرو آسان</h4>
+            <p>روند رزرو سریع و بدون دردسر، در کم‌ترین زمان ممکن.</p>
+        </div>
+    </div>
+</section>
+
+<!-- سوالات متداول -->
+<!-- سوالات متداول -->
+<section class="faq" id="faqs">
+    <h3>سوالات متداول</h3>
+    
+    <!-- سوال ۱: نحوه رزرو بلیط -->
+    <div class="faq-item">
+        <div class="question">چگونه می‌توانم بلیط رزرو کنم؟</div>
+        <div class="answer">برای رزرو بلیط، ابتدا فرم جستجو را پر کنید و گزینه‌های مورد نظر را انتخاب کنید. پس از بررسی گزینه‌ها، روی دکمه "جستجو" کلیک کنید. در صفحه نتایج، پرواز مورد نظر خود را انتخاب و روند پرداخت را کامل کنید تا بلیط شما صادر شود. در صورت نیاز، راهنمایی‌های مرحله به مرحله در سایت موجود است.</div>
+    </div>
+    
+    <!-- سوال ۲: امکان استرداد بلیط -->
+    <div class="faq-item">
+        <div class="question">آیا امکان استرداد بلیط وجود دارد؟</div>
+        <div class="answer">بله، بسته به نوع بلیط و شرایط شرکت هواپیمایی، امکان استرداد یا تغییر تاریخ وجود دارد. برخی بلیط‌ها قابل استرداد و برگشت هزینه هستند، در حالی که برخی دیگر غیرقابل استرداد می‌باشند. لطفاً قبل از خرید، شرایط استرداد را در جزئیات بلیط بررسی کنید و در صورت نیاز، با تیم پشتیبانی تماس بگیرید.</div>
+    </div>
+    
+    <!-- سوال ۳: بهترین زمان برای خرید بلیط -->
+    <div class="faq-item">
+        <div class="question">چه زمانی بهترین زمان برای خرید بلیط هواپیما است؟</div>
+        <div class="answer">معمولاً خرید بلیط چند هفته قبل از تاریخ سفر بهترین قیمت‌ها را ارائه می‌دهد. اما در برخی موارد، تخفیف‌های ویژه و پیشنهادهای محدود زمانی وجود دارد که باید با دقت دنبال کنید. همچنین، در فصول پرتردد، قیمت‌ها افزایش می‌یابد، بنابراین برنامه‌ریزی زودتر می‌تواند صرفه‌جویی قابل توجهی داشته باشد.</div>
+    </div>
+    
+    <!-- سوال ۴: پشتیبانی و خدمات پس از فروش -->
+    <div class="faq-item">
+        <div class="question">آیا پشتیبانی ۲۴ ساعته دارید؟</div>
+        <div class="answer">بله، تیم پشتیبانی ما در تمام ساعات شبانه‌روز آماده پاسخگویی به سوالات و رسیدگی به نیازهای شما است. می‌توانید از طریق تلفن، ایمیل یا چت زنده با ما تماس بگیرید.</div>
+    </div>
+    
+    <!-- سوال ۵: نحوه تغییر یا لغو رزرو -->
+    <div class="faq-item">
+        <div class="question">چگونه می‌توانم رزرو خود را تغییر یا لغو کنم؟</div>
+        <div class="answer">برای تغییر یا لغو رزرو، باید با تیم پشتیبانی تماس بگیرید یا از بخش مدیریت رزرو در سایت استفاده کنید. توجه داشته باشید که سیاست‌ها و هزینه‌های تغییر و لغو بر اساس نوع بلیط و شرایط شرکت هواپیمایی متفاوت است. لطفاً قبل از اقدام، شرایط مربوطه را مطالعه کنید.</div>
+    </div>
+    
+    <!-- سوال ۶: تفاوت بین بلیط‌های مختلف -->
+    <div class="faq-item">
+        <div class="question">تفاوت بین انواع بلیط‌ها چیست؟</div>
+        <div class="answer">بلیط‌های اقتصادی، بیزینس و فرست کلاس هر کدام ویژگی‌ها و قیمت‌های متفاوتی دارند. بلیط اقتصادی معمولاً ارزان‌تر است و امکانات محدودتری دارد، در حالی که بلیط بیزینس امکانات بیشتری و راحتی بالاتر ارائه می‌دهد. انتخاب نوع بلیط بستگی به نیاز و بودجه شما دارد.</div>
+    </div>
+    
+    <!-- سوال ۷: راهنمایی در مورد چک‌این و چک‌اوت -->
+    <div class="faq-item">
+        <div class="question">راهنمایی درباره فرآیند چک‌این و چک‌اوت چیست؟</div>
+        <div class="answer">در اکثر پروازها، چک‌این آنلاین از ۲۴ ساعت قبل از پرواز امکان‌پذیر است و می‌تواند روند سفر را سریع‌تر کند. هنگام چک‌این، اطلاعات مسافر تایید می‌شود و کارت سوار شدن صادر می‌شود. در فرودگاه، تنها کافی است کارت سوار شدن و مدارک شناسایی را ارائه دهید. پیشنهاد می‌کنیم قبل از سفر، قوانین مربوط به چک‌این شرکت هواپیمایی خود را مطالعه کنید.</div>
+    </div>
+</section>
+
+<section id="about">
+    <h3>درباره ما</h3>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+    شرکت ما با هدف ارائه بهترین خدمات در زمینه خرید بلیط هواپیما، تلاش می‌کند سفرهای شما را آسان‌تر و مقرون به صرفه‌تر کند. با تیمی مجرب و سامانه‌ای کاربرپسند، بهترین گزینه‌ها را برای سفرهای داخلی و خارجی در اختیار شما قرار می‌دهیم.
+    </p>
+</section>
+<!-- تماس با ما -->
+<section id="contact">
+    <h3>تماس با ما</h3>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+        در صورت هر سوال یا نیاز به راهنمایی، با ما تماس بگیرید:<br>
+        تلفن: ۰۲۱-۱۲۳۴۵۶۷۸۹<br>
+        ایمیل: info@airline.com<br>
+        آدرس: تهران، خیابان مثال، پلاک ۱۲۳
+    </p>
+</section>
+
+<!-- پاورقی -->
+<footer>
+    <p>&copy; 2024 سایت خرید بلیط هواپیما. تمامی حقوق محفوظ است.</p>
+</footer>
+
+<!-- اسکریپت برای سوالات متداول -->
+<script>
+    document.querySelectorAll('.question').forEach(item => {
+        item.addEventListener('click', () => {
+            const answer = item.nextElementSibling;
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+            } else {
+                answer.style.display = 'block';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
